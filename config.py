@@ -1,5 +1,5 @@
 
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Reborn@@cjb@localhost:3306/bbs?charset=utf8'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://username:password@localhost:3306/bbs?charset=utf8'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 SECRET_KEY = 'add salt'
