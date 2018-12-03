@@ -1,0 +1,16 @@
+.logo_box{
+    text-align: center;
+    padding-top: 40px;
+}
+.logo_box img{
+    width: 60px;
+    height: 60px;
+}
+.page-title{
+    text-align: center;
+}
+.form-box{
+    padding-top: 40px;
+    width: 300px;
+    margin: 0 auto;
+}

@@ -1,0 +1,70 @@
+{% extends 'front/base.html' %}
+{% from 'common/_macros.html' import static %}
+
+{% block title %}
+    安全设置
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ static('front/css/security.css') }}">
+    <script src="{{ static('common/zlparam.js') }}"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="{{ static('front/js/security.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="security-head">
+    <span>安全设置</span>
+</div>
+<div class="security-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" value="{{ g.front_user.username }}" name="username" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">手机号</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" value="{{ g.front_user.telephone }}" name="telephone" disabled>
+            </div>
+            <button class="col-sm-2 btn btn-default" id="sms_captcha">获取验证码</button>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">短信验证码</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="请输入短信验证码" name="sms-captcha">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">旧密码</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" placeholder="请输入旧密码" name="old-password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">新密码</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" placeholder="请输入新密码" name="password1">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">重复密码</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" placeholder="请确认新密码" name="password2">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">图像验证码</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="请输入图像验证码" name="graph-captcha">
+            </div>
+            <span><img src="{{ url_for('common.graph_captcha') }}" id="captcha-img"></span>
+        </div>
+        <div class="submit-btn">
+            <button class="btn btn-primary" id="account-save-btn">保 存</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

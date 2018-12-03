@@ -1,0 +1,77 @@
+{% extends 'front/base.html' %}
+{% from 'common/_macros.html' import static %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block head %}
+    <script src="{{ static('ueditor/ueditor.config.js') }}"></script>
+    <script src="{{ static('ueditor/ueditor.all.min.js') }}"></script>
+    <script src="{{ static('front/js/post_detail.js') }}"></script>
+    <link rel="stylesheet" href="{{ static('front/css/post_detail.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="lg-container">
+        <div class="post-container" id="post-content" data-id="{{ post.id }}">
+            <h2>{{ post.title }}</h2>
+            <p class="post-info-group">
+                <span>发表时间:{{ post.create_time }}</span>
+                <span>作者:{{ post.author.username }}</span>
+                <span>所属板块:{{ post.board.name }}</span>
+                <span>阅读数:pass</span>
+                <span>评论数:pass</span>
+            </p>
+            <article class="post-content">
+                {{ post.content|safe }}
+            </article>
+            <div class="like-container">
+                {% if not like %}
+                    <button class="btn btn-default" id="like-post-btn">点 赞: {{ post.likers|count }}</button>
+                {% else %}
+                    <button class="btn btn-primary" id="like-post-btn">已 赞: {{ post.likers|count }}</button>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="comment-container">
+            <h3>评论列表</h3>
+            <ul class="comment-list-group">
+            {% if post.comments %}
+                {% for comment in post.comments %}
+                    <li>
+                        <div class="commenter-avatar-group">
+                            <img src="{{ comment.commenter.avatar or static('image/default_avatar.png') }}" >
+                        </div>
+                        <div class="comment-info-group">
+                            <p class="commenter-info">
+                                <span>作者：{{ comment.commenter.username }}</span>
+                                <span>发表时间：{{ comment.create_time }}</span>
+                            </p>
+                            <p class="content-text">{{ comment.content|safe }}</p>
+                        </div>
+                        <div class="comment-operate-container">
+                            {% if g.front_user and comment.commenter.id == g.front_user.id %}
+                                <button class="btn btn-danger btn-sm handle-comment-btn " data-commentID="{{ comment.id }}" data-type="delete">删除</button>
+                            {% else %}
+                                <button class="btn btn-warning btn-sm handle-comment-btn " data-commentID="{{ comment.id }}" data-type="inform">举报</button>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>暂无评论</li>
+            {% endif %}
+
+            </ul>
+        </div>
+        <div class="add-comment-container">
+            <h3>添加评论</h3>
+            <script id="editor" type="text/plain" ></script>
+            <div class="comment-submit-btn">
+                <button class="btn btn-primary" id="comment-submit-btn">发表评论</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

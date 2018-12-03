@@ -1,0 +1,46 @@
+{% extends 'front/sign_login_base.html' %}
+{% from 'common/_macros.html' import static %}
+
+{% block title %}
+    bbs登陆界面
+{% endblock %}
+
+{% block page_title %}
+{{ self.title() }}
+{% endblock %}
+
+{% block header %}
+{#    <style>#}
+{#        .logo_box img{#}
+{#            width: 60px;#}
+{#            height: 60px;#}
+{#        }#}
+{#        .form-box{#}
+{#            padding-top: 40px;#}
+{#            width: 300px;#}
+{#            margin: 0 auto;#}
+{#        }#}
+{#    </style>#}
+    <script src="{{ static('front/js/login.js') }}"></script>
+{% endblock %}
+
+{% block sign_content %}
+    <div class="form-group">
+        <input type="text" class="form-control" name="telephone" placeholder="手机号码">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" name="password" placeholder="密码">
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="remember_me" value="1"> 记住我
+        </label>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-warning btn-block" id="submit-btn">立刻登陆</button>
+    </div>
+    <div class="form-group">
+        <a href="{{ url_for('front.sign_in') }}" class="signin-link">立即注册</a>
+        <a href="#" class="resetpwd-link" style=" float: right;">忘记密码</a>
+    </div>
+{% endblock %}

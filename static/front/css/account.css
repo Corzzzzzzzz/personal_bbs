@@ -1,0 +1,36 @@
+div.account-head{
+    height: 50px;
+    padding-left: 30px;
+    border-bottom   : 1px solid #e8e8e8;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+div.account-head span{
+    line-height: 50px;
+    color: #3b97d7;
+    font-weight: bold;
+}
+
+div.account-body .form-group #signature{
+    height: 100px;
+}
+
+div.account-body .form-group .image{
+    text-align: center;
+}
+
+div.account-body .form-group img{
+    height: 100px;
+    width: 100px;
+}
+
+div.submit-btn{
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #e8e8e8;
+}
+
+
+
+

@@ -1,0 +1,123 @@
+
+
+div.personal-msg-head{
+    height: 120px;
+    padding: 10px;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+}
+
+div.personal-msg-head img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    float: left;
+}
+
+div.personal-msg-head p{
+    float: left;
+    line-height: 100px;
+    font-size: 16px;
+    margin: 0 25px;
+
+}
+
+div.personal-msg-head .follow-btn{
+    float: left;
+    margin: 30px 20px;
+}
+
+div.followed-container{
+    margin: 10px 0;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px
+}
+
+div.followed-head{
+    height: 40px;
+    padding-left: 30px;
+    font-size: 18px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+div.followed-head span{
+    line-height: 50px;
+    color: #3b97d7;
+    font-weight: bold;
+}
+
+div.followed-container .followed-list{
+    height: 70px;
+}
+
+div.follower-container{
+    margin: 10px 0;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px
+}
+
+div.follower-head{
+    height: 40px;
+    padding-left: 30px;
+    font-size: 18px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+div.follower-head span{
+    line-height: 50px;
+    color: #3b97d7;
+    font-weight: bold;
+}
+
+div.follower-container .follower-list{
+    height: 70px;
+}
+
+div.followed-list .followed-msg{
+    margin: 2px 5px;
+    float: left;
+    text-align: center;
+}
+
+div.followed-list .followed-msg img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: block;
+}
+
+div.follower-list .follower-msg{
+    margin: 2px 5px;
+    float: left;
+    text-align: center;
+}
+
+div.follower-list .follower-msg img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: block;
+}
+
+div.personal-statistics{
+    margin: 10px;
+}
+
+div.personal-post-container{
+    margin: 10px 0;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px
+}
+
+div.personal-post-container .personal-post-header{
+    height: 40px;
+    padding-left: 30px;
+    font-size: 18px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+div.personal-post-container .personal-post-header span{
+    line-height: 50px;
+    color: #3b97d7;
+    font-weight: bold;
+}

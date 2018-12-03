@@ -1,0 +1,82 @@
+{% extends 'front/base.html' %}
+{% from 'common/_macros.html' import static %}
+{% block title %}
+    个人信息设置
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ static('front/css/account.css') }}">
+    <script src="{{ static('front/js/account.js') }}"></script>
+    <script src="https://cdn.staticfile.org/Plupload/2.1.1/moxie.js"></script>
+    <script src="https://cdn.staticfile.org/Plupload/2.1.1/plupload.dev.js"></script>
+    <script src="https://cdn.staticfile.org/qiniu-js-sdk/1.0.14-beta/qiniu.js"></script>
+    <script src="{{ static('common/zlqiniu.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="account-head">
+        <span>我的信息</span>
+    </div>
+    <div class="account-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="image">
+                    <button id="upload-avatar-btn">
+                        <img src="{{ g.front_user.avatar or static('image/default_avatar.png') }}" id="avatar-img">
+                    </button>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="{{ g.front_user.username }}" name="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label" >手机号</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="{{ g.front_user.telephone }}" disabled name="telephone">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">邮箱</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="{{ g.front_user.email }}" name="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">真实姓名</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="{{ g.front_user.realname }}" name="realname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">个性签名</label>
+                <div class="col-sm-9">
+                    <textarea type="text" class="form-control" placeholder="{{ g.front_user.signature or '这个懒东西呀！！' }}" name="signature"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">性别</label>
+                <div class="col-sm-9">
+                    <label class="radio-inline">
+                        <input type="radio" name="genderOptions" value="MALE" id="male">男
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="genderOptions" value="FEMALE" id="female">女
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="genderOptions" value="SECRET" id="secret">秘密
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="genderOptions" value="UNKNOW" id="unknow">不晓得
+                    </label>
+                </div>
+            </div>
+            <div class="submit-btn">
+                <button class="btn btn-primary" id="account-save-btn">保 存</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

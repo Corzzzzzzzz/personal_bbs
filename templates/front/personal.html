@@ -1,0 +1,80 @@
+{% extends 'front/base.html' %}
+{% from 'common/_macros.html' import static %}
+
+{% block title -%}
+个人中心
+{%- endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ static('front/css/personal.css') }}">
+    <script src="{{ static('front/js/personal.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="lg-container">
+    <div class="personal-msg-container">
+        <div class="personal-msg-head" data-id="{{ user.id }}" data-relation="{{ relation }}">
+            <img src="{{ user.avatar or static('image/default_avatar.png') }}" alt="">
+            <p>{{ user.username }}</p>
+            <div class="follow-btn content">
+                {% if relation %}
+                    <button class="btn btn-default" id="follow-btn">取消关注</button>
+                {% else %}
+                    <button class="btn btn-warning" id="follow-btn">关注</button>
+                {% endif %}
+            </div>
+            <div class="personal-statistics">
+                <div class="personal-statistics-content">原创: {{ user.posts|count }}</div>
+                <div class="personal-statistics-content">粉丝: {{ user.followers.all()|count }}</div>
+                <div class="personal-statistics-content">喜欢: {{ user.liking_posts|count }}</div>
+                <div class="personal-statistics-content">评论: {{ user.comments|count }}</div>
+            </div>
+        </div>
+
+        <div class="followed-container">
+            <div class="followed-head">
+                <span>我的关注</span>
+            </div>
+            <div class="followed-list">
+                {% for followed in followed_lists %}
+                    <a href="{{ url_for('front.personal', id=followed.followed.id) }}">
+                        <div class="followed-msg">
+                            <img src="{{ followed.followed.avatar or static('image/default_avatar.png') }}" >
+                            {{ followed.followed.username }}
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="follower-container">
+            <div class="follower-head">
+                <span>关注我的</span>
+            </div>
+            <div class="follower-list">
+                {% for follower in follower_lists %}
+                    <a href="{{ url_for('front.personal', id=follower.follower.id) }}">
+                        <div class="follower-msg">
+                            <img src="{{ follower.follower.avatar or static('image/default_avatar.png') }}" >
+                            {{ follower.follower.username }}
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="personal-post-container">
+        <div class="personal-post-header">
+            <span>我的帖子</span>
+        </div>
+        <div class="personal-post-list">
+            {% if user.posts %}
+                {% for post in user.posts %}
+                    <p>{{ loop.index }}</p>
+                {% endfor %}
+            {% else %}
+                这个银暂未发表过帖子
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
